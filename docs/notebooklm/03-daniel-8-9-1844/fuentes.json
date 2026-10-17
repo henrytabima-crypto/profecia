@@ -1,0 +1,119 @@
+{
+  "lesson_id": "03-daniel-8-9-1844",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-20",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gPQgOm1j-R4",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=1YlyRMkLsTM",
+      "status": "published"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "1844_y_el_fin_que_nunca_llegó.m4a",
+        "El_Gran_Chasco_de_1844.mp4",
+        "export/Daniel_8_9_1844_podcast_1080p.mp4"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "03-biblia-daniel-8",
+      "title": "Daniel 8 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/DAN.8.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["carnero", "macho cabrío", "2.300 tardes y mañanas", "santuario"],
+      "claims_not_supported": ["fecha 1844 expresada literalmente", "regreso de Cristo en 1844"]
+    },
+    {
+      "id": "03-biblia-daniel-9",
+      "title": "Daniel 9 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/DAN.9.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["setenta semanas", "Mesías", "explicación de Gabriel"],
+      "claims_not_supported": ["declaración literal de que las setenta semanas son parte de las 2.300 tardes y mañanas"]
+    },
+    {
+      "id": "03-oficial-creencia-24",
+      "title": "Creencia 24: El ministerio de Cristo en el Santuario Celestial",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/24-el-ministerio-de-cristo-en-el-santuario-celestial/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["posición oficial sobre 1844", "juicio previo al advenimiento"],
+      "claims_not_supported": ["consenso cristiano universal", "corroboración histórica independiente"]
+    },
+    {
+      "id": "03-bri-purificacion",
+      "title": "El santuario y su purificación",
+      "url": "https://adventistbiblicalresearch.org/articles/el-santuario-y-su-purificacion",
+      "publisher": "Biblical Research Institute",
+      "category": "adventist_research",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y resumir con atribución.",
+      "used_for": ["argumentación Daniel 8–9", "principio día-año", "cronología"],
+      "claims_not_supported": ["ausencia de debate exegético", "prueba arqueológica de 1844"]
+    },
+    {
+      "id": "03-egw-templo",
+      "title": "El conflicto de los siglos · capítulo 24: El templo de Dios",
+      "url": "https://text.egwwritings.org/read/1710.1914",
+      "publisher": "Ellen G. White Estate",
+      "category": "egw",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; citar solo fragmentos breves y exactos.",
+      "used_for": ["reinterpretación del santuario", "significado de 1844"],
+      "claims_not_supported": ["relato histórico independiente del movimiento"]
+    },
+    {
+      "id": "03-historia-millerita",
+      "title": "El movimiento millerita y el Gran Chasco",
+      "url": "https://noticias.adventistas.org/es/columna/edegar.link/el-movimiento-millerita-y-el-gran-chasco/",
+      "publisher": "Noticias Adventistas",
+      "category": "denominational_history",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y resumir; identificar como historia institucional.",
+      "used_for": ["Miller", "22 de octubre de 1844", "Gran Chasco"],
+      "claims_not_supported": ["historiografía independiente", "validez doctrinal de 1844"]
+    },
+    {
+      "id": "03-historia-persepolis",
+      "title": "Persépolis",
+      "url": "https://whc.unesco.org/es/list/114/",
+      "publisher": "UNESCO",
+      "category": "heritage",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; respetar los derechos de imágenes y textos.",
+      "used_for": ["contexto aqueménida", "Darío y sucesores"],
+      "claims_not_supported": ["selección del decreto de 457 a. C.", "cálculo profético de 1844"]
+    }
+  ]
+}
+

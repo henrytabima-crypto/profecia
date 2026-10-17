@@ -1,0 +1,17 @@
+# Research and local-generation assets are not required by the production app.
+/.insforge/
+/.tripo/
+/.wrangler/
+/dist/
+.env*
+# Keep the Daniel illustration used when WebGL is unavailable.
+public/3d-sources/*
+!public/3d-sources/daniel-statue-source-v1.png
+docs/
+examples/
+scripts/
+tests/
+drizzle/
+AGENTS.md
+README.md
+og-social-generated.png

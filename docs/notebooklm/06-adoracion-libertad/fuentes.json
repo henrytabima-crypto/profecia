@@ -1,0 +1,106 @@
+{
+  "lesson_id": "06-adoracion-libertad",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-20",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=E5SRR-kQw9k",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=yB4sRoGvnH4",
+      "status": "published"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "A_quién_pertenece_realmente_tu_conciencia.m4a",
+        "Profecía_y_Libertad.mp4",
+        "export/Adoracion_y_libertad_podcast_1080p.mp4"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "06-biblia-daniel-3",
+      "title": "Daniel 3 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/DAN.3.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["imagen", "adoración impuesta", "fidelidad bajo coerción"],
+      "claims_not_supported": ["identidad de una tecnología moderna", "fecha de una crisis futura"]
+    },
+    {
+      "id": "06-biblia-apocalipsis-13",
+      "title": "Apocalipsis 13 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/REV.13.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["adoración", "imagen", "marca", "coerción económica"],
+      "claims_not_supported": ["vacuna, microchip o moneda concreta", "nombre literal de una iglesia moderna"]
+    },
+    {
+      "id": "06-oficial-libertad",
+      "title": "Libertad religiosa: un principio fundamental",
+      "url": "https://institucional.adventistas.org/es/quienes-somos/mision-y-servicio/libertad-religiosa/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["posición institucional sobre libertad religiosa", "historia de defensa de conciencia"],
+      "claims_not_supported": ["corroboración independiente", "identificación de una ley final"]
+    },
+    {
+      "id": "06-bri-marca",
+      "title": "Respuestas a preguntas sobre la marca de la bestia y los eventos finales",
+      "url": "https://adventistbiblicalresearch.org/articles/respuestas-a-preguntas-sobre-la-marca-de-la-bestia-y-los-eventos-finalessup1sup",
+      "publisher": "Biblical Research Institute",
+      "category": "adventist_research",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y resumir con atribución.",
+      "used_for": ["posición adventista", "límites frente a especulación tecnológica"],
+      "claims_not_supported": ["que una tecnología actual sea la marca", "fecha de eventos futuros"]
+    },
+    {
+      "id": "06-egw-libertad-conciencia",
+      "title": "El conflicto de los siglos · capítulo 36: La libertad de conciencia amenazada",
+      "url": "https://text.egwwritings.org/read/1710.2585",
+      "publisher": "Ellen G. White Estate",
+      "category": "egw",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; citar solo fragmentos breves y exactos.",
+      "used_for": ["conciencia", "relación entre religión y poder civil"],
+      "claims_not_supported": ["descripción neutral de toda iglesia o Estado"]
+    },
+    {
+      "id": "06-historia-dudh",
+      "title": "Declaración Universal de Derechos Humanos",
+      "url": "https://www.un.org/es/about-us/universal-declaration-of-human-rights",
+      "publisher": "Naciones Unidas",
+      "category": "primary_source",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Fuente pública de Naciones Unidas; mantener atribución.",
+      "used_for": ["artículo 18", "libertad de pensamiento, conciencia y religión"],
+      "claims_not_supported": ["cumplimiento de Apocalipsis 13", "identificación profética de una ley actual"]
+    }
+  ]
+}
+

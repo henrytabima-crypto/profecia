@@ -1,0 +1,13 @@
+.bible-excerpt { background: var(--excerpt-bg, #091526); border: 1px solid var(--excerpt-border, #7489a249); border-radius: 8px; color: var(--excerpt-text, #dae4ee); min-width: 0; padding: 18px 20px; }
+.bible-excerpt-label { color: var(--excerpt-muted, #b1bed0); display: flex; flex-wrap: wrap; font-size: 10px; gap: 6px 18px; justify-content: space-between; line-height: 1.6; margin-bottom: 14px; }
+.bible-excerpt-label > span:first-child { font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.bible-excerpt p { color: inherit; font-size: 15px; line-height: 1.8; margin: 0 0 12px; }
+.bible-excerpt .bible-excerpt-title { color: var(--excerpt-muted, #dfc994); font-size: 13px; font-weight: 600; margin: 0 0 10px; }
+.bible-excerpt blockquote { border: 0; font-family: Georgia, serif; margin: 0; padding: 0; }
+.bible-excerpt blockquote p { font-size: 17px; }
+.bible-excerpt sup { color: var(--excerpt-muted, #d3bc86); font-family: Arial, sans-serif; font-size: 10px; margin-right: 4px; }
+.bible-excerpt .bible-excerpt-gap { color: var(--excerpt-muted, #b1bed0); line-height: 1; text-align: center; }
+.bible-excerpt-context.bible-passage, .bible-excerpt > [role="status"] button { background: transparent; border: 0; color: var(--excerpt-muted, #dfc994); font-size: 12px; gap: 12px; line-height: 1.6; min-height: 44px; padding: 9px 0; text-decoration: underline; text-underline-offset: 4px; }
+.bible-excerpt-context.bible-passage:hover { background: transparent; color: var(--excerpt-text, #f5e4bd); }
+.bible-excerpt-context.bible-passage > span { color: inherit; }
+@media (max-width: 640px) { .bible-excerpt { padding: 15px; } .bible-excerpt blockquote p { font-size: 16px; line-height: 1.75; } }

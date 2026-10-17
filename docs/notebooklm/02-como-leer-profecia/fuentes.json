@@ -1,0 +1,106 @@
+{
+  "lesson_id": "02-como-leer-profecia",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-20",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=o0aBVL9mu9Y",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=TlICMUPaeLU",
+      "status": "published"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "Cómo_leer_las_profecías_de_Daniel.m4a",
+        "Profecía_vs.mp4",
+        "export/Como_leer_la_profecia_podcast_1080p.mp4"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "02-biblia-daniel-2",
+      "title": "Daniel 2 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/DAN.2.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["interpretación interna", "sucesión de reinos", "reino de Dios"],
+      "claims_not_supported": ["nombre de todos los reinos posteriores a Babilonia dentro de Daniel 2"]
+    },
+    {
+      "id": "02-oficial-escrituras",
+      "title": "Creencia 1: Las Sagradas Escrituras",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/1-las-escrituras-sagradas/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["posición adventista sobre autoridad bíblica"],
+      "claims_not_supported": ["método histórico detallado para cada símbolo"]
+    },
+    {
+      "id": "02-bri-metodos",
+      "title": "Métodos de estudio de la Biblia",
+      "url": "https://adventistbiblicalresearch.org/articles/metodos-de-estudio-de-la-biblia",
+      "publisher": "Biblical Research Institute",
+      "category": "adventist_research",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y resumir con atribución.",
+      "used_for": ["género", "contexto", "principios de interpretación"],
+      "claims_not_supported": ["consenso universal sobre toda identificación historicista"]
+    },
+    {
+      "id": "02-bohr-principios",
+      "title": "15 principios de interpretación",
+      "url": "https://sumtvlatino.org/programas/15-principios-de-interpretacion-como-estudiar-las-profecias-por-si-mismo",
+      "publisher": "SUMtv Latino",
+      "category": "pastor",
+      "perspective": "perspectiva_pastoral",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; no redistribuir transcripciones extensas.",
+      "used_for": ["explicación pedagógica del método historicista"],
+      "claims_not_supported": ["declaración oficial de la denominación"]
+    },
+    {
+      "id": "02-historia-cuatro-imperios",
+      "title": "La teoría de los Cuatro Imperios como elemento opositor al Helenismo y a Roma",
+      "url": "https://dialnet.unirioja.es/servlet/articulo?codigo=5026720",
+      "publisher": "Dialnet · Pontificia Universidad Católica Argentina",
+      "category": "academic",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Consultar licencia; enlazar y resumir.",
+      "used_for": ["tradición histórica de los cuatro imperios", "contexto de recepción"],
+      "claims_not_supported": ["validez automática de una cronología confesional moderna"]
+    },
+    {
+      "id": "02-museo-manuscritos",
+      "title": "Proyecto digital de los Manuscritos del Mar Muerto",
+      "url": "https://dss.collections.imj.org.il/es/home",
+      "publisher": "Museo de Israel",
+      "category": "museum",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Usar el sitio conforme a sus condiciones; no redistribuir imágenes sin permiso.",
+      "used_for": ["transmisión y recepción antigua de textos", "contexto material"],
+      "claims_not_supported": ["interpretación adventista de cada símbolo", "fecha de eventos futuros"]
+    }
+  ]
+}
+

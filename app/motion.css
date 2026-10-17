@@ -1,0 +1,32 @@
+/* Short cues, with no delays or interaction locks. */
+@keyframes connection-confirmed {
+  from { transform: scale(.88); }
+  to { transform: scale(1); }
+}
+
+@keyframes hint-arrival {
+  from { opacity: .45; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .guided-progress li > span:first-child,
+  .guided-progress li::after,
+  .journey-path li > span:first-child,
+  .journey-path li::after {
+    transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+  }
+
+  .guided-progress .earned > span:first-child,
+  .guided-recognized i,
+  .guided-completion-heading > span,
+  .journey-path .earned > span:first-child,
+  .journey-order-slots .filled {
+    animation: connection-confirmed 120ms ease-out;
+  }
+
+  .guided-coach.has-hint,
+  .journey-coach p:not(.journey-coach-idle) {
+    animation: hint-arrival 120ms ease-out;
+  }
+}

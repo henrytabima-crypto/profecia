@@ -1,0 +1,93 @@
+{
+  "lesson_id": "01-gran-conflicto",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-20",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=HBR7xkYm2MU",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=soWk2TCDX2Q",
+      "status": "published"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "El_Gran_Conflicto.mp4",
+        "Por_qué_Dios_no_destruyó_a_Lucifer.m4a",
+        "export/El_gran_conflicto_podcast_1080p.mp4"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "01-biblia-apocalipsis-12",
+      "title": "Apocalipsis 12 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/REV.12.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["dragón", "conflicto celestial", "victoria del Cordero"],
+      "claims_not_supported": ["cronología completa del origen del mal", "identificación de cada símbolo con un actor moderno"]
+    },
+    {
+      "id": "01-oficial-creencia-8",
+      "title": "Creencia 8: El Gran Conflicto",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/8-el-gran-conflicto/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["formulación doctrinal oficial", "alcance y desenlace del conflicto"],
+      "claims_not_supported": ["consenso de todas las tradiciones cristianas", "corroboración histórica independiente"]
+    },
+    {
+      "id": "01-egw-capitulo-30",
+      "title": "El conflicto de los siglos · capítulo 30",
+      "url": "https://text.egwwritings.org/read/1710.2276",
+      "publisher": "Ellen G. White Estate",
+      "category": "egw",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; citar solo fragmentos breves y exactos.",
+      "used_for": ["libertad", "origen del mal", "carácter de Dios"],
+      "claims_not_supported": ["afirmación bíblica explícita en un único versículo", "consenso académico"]
+    },
+    {
+      "id": "01-bohr-genesis",
+      "title": "Descubriendo los misterios de Génesis",
+      "url": "https://sumtvlatino.org/programas/descubriendo-los-misterios-de-genesis",
+      "publisher": "SUMtv Latino",
+      "category": "pastor",
+      "perspective": "perspectiva_pastoral",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; no redistribuir transcripciones extensas.",
+      "used_for": ["exposición pastoral de Génesis", "conexión narrativa"],
+      "claims_not_supported": ["declaración doctrinal oficial", "investigación histórica independiente"]
+    },
+    {
+      "id": "01-historia-imperio-romano",
+      "title": "El evangelio de Jesucristo y el Imperio romano",
+      "url": "https://revistas.comillas.edu/estudioseclesiasticos/es/article/view/8243",
+      "publisher": "Universidad Pontificia Comillas",
+      "category": "academic",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Consultar licencia del artículo; enlazar y resumir.",
+      "used_for": ["marco político-religioso del Nuevo Testamento"],
+      "claims_not_supported": ["veracidad teológica del gran conflicto", "dependencia directa de cada símbolo apocalíptico"]
+    }
+  ]
+}
+

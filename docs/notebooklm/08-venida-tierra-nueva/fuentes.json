@@ -1,0 +1,131 @@
+{
+  "lesson_id": "08-venida-tierra-nueva",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-21",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=INg06p9U_0k",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=UZDHh46wJfQ",
+      "status": "published",
+      "local_file": "export/Venida_y_Tierra_Nueva_podcast_1080p.mp4"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "El_Final_Bíblico.mp4",
+        "¿El_apocalipsis_es_destrucción_o_restauración_.m4a"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "08-biblia-apocalipsis-20",
+      "title": "Apocalipsis 20 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/REV.20.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["milenio", "resurrecciones", "juicio", "fin del mal"],
+      "claims_not_supported": ["fecha de inicio del milenio", "orden completo sin relacionar otros pasajes"]
+    },
+    {
+      "id": "08-biblia-apocalipsis-21",
+      "title": "Apocalipsis 21 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/REV.21.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["Tierra Nueva", "presencia de Dios", "fin del dolor y la muerte"],
+      "claims_not_supported": ["fecha futura", "especificaciones científicas de la nueva creación"]
+    },
+    {
+      "id": "08-oficial-creencia-25",
+      "title": "Creencia 25: La Segunda Venida de Cristo",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/25-la-segunda-venida-de-cristo/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["venida literal, personal y visible", "prohibición de fijar fecha"],
+      "claims_not_supported": ["fecha de la Segunda Venida"]
+    },
+    {
+      "id": "08-oficial-creencia-27",
+      "title": "Creencia 27: El Milenio y el Fin del Pecado",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/27-el-milenio-y-el-fin-del-pecado/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["secuencia adventista del milenio", "fin del pecado"],
+      "claims_not_supported": ["consenso de todas las tradiciones milenaristas"]
+    },
+    {
+      "id": "08-oficial-creencia-28",
+      "title": "Creencia 28: La Tierra Nueva",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/28-la-tierra-nueva/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["posición adventista sobre restauración final"],
+      "claims_not_supported": ["descripción exhaustiva de la vida futura"]
+    },
+    {
+      "id": "08-egw-fin-conflicto",
+      "title": "El conflicto de los siglos · capítulo 43: El fin del conflicto",
+      "url": "https://text.egwwritings.org/read/1710.3009",
+      "publisher": "Ellen G. White Estate",
+      "category": "egw",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; citar solo fragmentos breves y exactos.",
+      "used_for": ["desenlace del conflicto", "restauración"],
+      "claims_not_supported": ["historiografía independiente", "fecha futura"]
+    },
+    {
+      "id": "08-bohr-cadena",
+      "title": "La Gran Cadena Profética",
+      "url": "https://sumtvlatino.org/programas/la-gran-cadena-profetica",
+      "publisher": "SUMtv Latino",
+      "category": "pastor",
+      "perspective": "perspectiva_pastoral",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; no redistribuir transcripciones extensas.",
+      "used_for": ["explicación pastoral de la secuencia profética"],
+      "claims_not_supported": ["declaración oficial", "consenso histórico"]
+    },
+    {
+      "id": "08-historia-milenarismos",
+      "title": "Una tipología de las profecías milenaristas",
+      "url": "https://revistas.ucm.es/index.php/ILUR/es/article/view/37701",
+      "publisher": "Ilu. Revista de Ciencias de las Religiones · Universidad Complutense de Madrid",
+      "category": "academic",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Consultar licencia; enlazar y resumir.",
+      "used_for": ["diversidad histórica de lecturas milenaristas"],
+      "claims_not_supported": ["verdad de una secuencia teológica concreta", "fecha del fin"]
+    }
+  ]
+}

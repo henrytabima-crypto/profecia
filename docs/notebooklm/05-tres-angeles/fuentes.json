@@ -1,0 +1,106 @@
+{
+  "lesson_id": "05-tres-angeles",
+  "checked_at": "2026-08-25",
+  "media": {
+    "updated_at": "2026-09-20",
+    "links_provided_by": "autor",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=EyKPgoNiIHQ",
+      "status": "published"
+    },
+    "podcast": {
+      "url": "https://www.youtube.com/watch?v=YpHngjj4D7k",
+      "status": "published"
+    },
+    "local_cleanup": {
+      "date": "2026-09-20",
+      "removed_files": [
+        "El_Apocalipsis_como_una_operación_de_rescate.m4a",
+        "Paradoja_de_Apocalipsis_14.mp4",
+        "export/Los_tres_angeles_podcast_1080p.mp4"
+      ],
+      "preserved_infographics": true
+    }
+  },
+  "sources": [
+    {
+      "id": "05-biblia-apocalipsis-14",
+      "title": "Apocalipsis 14 · RVR1960",
+      "url": "https://www.bible.com/es/bible/149/REV.14.RVR1960",
+      "publisher": "YouVersion",
+      "category": "biblical_text",
+      "perspective": "texto_biblico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; evitar reproducir el capítulo completo.",
+      "used_for": ["evangelio eterno", "tres mensajes", "adoración", "cosecha"],
+      "claims_not_supported": ["nombre de una denominación moderna", "salvación automática por pertenencia institucional"]
+    },
+    {
+      "id": "05-oficial-creencia-13",
+      "title": "Creencia 13: El Remanente y su Misión",
+      "url": "https://institucional.adventistas.org/es/nuestras-crencias/13-el-remanente-y-su-mision/",
+      "publisher": "Iglesia Adventista del Séptimo Día · División Sudamericana",
+      "category": "adventist_official",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y parafrasear con atribución.",
+      "used_for": ["identidad misionera", "formulación oficial de remanente"],
+      "claims_not_supported": ["que todo adventista esté salvo", "que toda persona no adventista esté perdida"]
+    },
+    {
+      "id": "05-bri-profecia-cumplida",
+      "title": "Profecía cumplida",
+      "url": "https://adventistbiblicalresearch.org/articles/profecia-cumplida",
+      "publisher": "Biblical Research Institute",
+      "category": "adventist_research",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar y resumir con atribución.",
+      "used_for": ["1844", "evangelio eterno", "juicio y misión"],
+      "claims_not_supported": ["consenso histórico independiente"]
+    },
+    {
+      "id": "05-egw-mensaje-final",
+      "title": "El conflicto de los siglos · capítulo 39: El mensaje final de Dios",
+      "url": "https://text.egwwritings.org/read/1710.2757",
+      "publisher": "Ellen G. White Estate",
+      "category": "egw",
+      "perspective": "interpretacion_adventista",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; citar solo fragmentos breves y exactos.",
+      "used_for": ["alcance del mensaje final", "misión"],
+      "claims_not_supported": ["relato neutral de la expansión adventista"]
+    },
+    {
+      "id": "05-bohr-tres-angeles",
+      "title": "El mensaje de los tres ángeles",
+      "url": "https://sumtvlatino.org/programas/el-mensaje-de-los-tres-angeles",
+      "publisher": "SUMtv Latino",
+      "category": "pastor",
+      "perspective": "perspectiva_pastoral",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Enlazar; no redistribuir transcripciones extensas.",
+      "used_for": ["explicación pastoral de Apocalipsis 14"],
+      "claims_not_supported": ["declaración doctrinal oficial", "historiografía independiente"]
+    },
+    {
+      "id": "05-historia-bucaramanga",
+      "title": "Orígenes de los adventistas en Bucaramanga, Colombia, 1928–1946",
+      "url": "https://historiayespacio.univalle.edu.co/index.php/historia_y_espacio/article/view/10796",
+      "publisher": "Historia y Espacio · Universidad del Valle",
+      "category": "academic",
+      "perspective": "contexto_historico",
+      "public_language": "es",
+      "ingest": "url",
+      "rights": "Consultar licencia del artículo; enlazar y resumir.",
+      "used_for": ["recepción adventista en Colombia", "conversión y hábitos"],
+      "claims_not_supported": ["cumplimiento sobrenatural de Apocalipsis 14", "historia global del adventismo"]
+    }
+  ]
+}
+
