@@ -9,7 +9,7 @@ import LevelVideo from "./LevelVideo";
 import LevelMatching from "./LevelMatching";
 import LevelClassification from "./LevelClassification";
 import StatueExploration from "./StatueExploration";
-import { levelExperience, stageComplete } from "../data/expedition";
+import { stageComplete } from "../data/expedition";
 import type { resources, ResourceId } from "../data/journey";
 import { modules } from "../data/studies";
 
@@ -46,7 +46,6 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
   const { media: firstLevelMedia, readings: firstLevelReadings, tasks: firstLevelTasks } = definition;
   const study = modules[definition.index];
   const stages = levelStages(definition);
-  const experience = levelExperience(state, definition);
   const practice = practiceStage(definition);
   const reward = rewardStage(definition);
   const exploringStatue = definition.exploration === "statue" && state.stage === 3;
@@ -57,6 +56,8 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
   const [wrong, setWrong] = useState<number | null>(null);
   const [selectedCard, setSelectedCard] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
+  const stageNavigation = useRef<HTMLElement>(null);
+  const [stageOverflow, setStageOverflow] = useState({ start: false, end: false });
   const level = useRef<HTMLElement>(null);
   const transition = useRef<{ skipTransition: () => void } | null>(null);
   const task = firstLevelTasks[state.task];
@@ -66,6 +67,7 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
   const media = firstLevelMedia[mediaKind];
   const positionKey = `${mediaKind}:${media?.id ?? "reading"}`;
   const seconds = state.positions[positionKey] ?? 0;
+  const videoStep = state.stage < 2 && Boolean(media);
   // Selecting a statue part updates this view in place; it is not navigation.
   const progressKey = `${state.stage}:${state.reading}:${state.task}`;
 
@@ -73,6 +75,25 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
     heading.current?.focus({ preventScroll: true });
     level.current?.scrollIntoView({ block: "start", behavior: "instant" });
   }, [progressKey]);
+
+  useLayoutEffect(() => {
+    const navigation = stageNavigation.current;
+    if (!navigation) return;
+    const syncOverflow = () => {
+      const next = { start: navigation.scrollLeft > 1, end: navigation.scrollLeft + navigation.clientWidth < navigation.scrollWidth - 1 };
+      setStageOverflow((previous) => previous.start === next.start && previous.end === next.end ? previous : next);
+    };
+    const revealActive = () => {
+      const active = navigation.querySelector<HTMLButtonElement>("[aria-current='step']");
+      if (active) navigation.scrollTo({ left: navigation.scrollLeft + active.getBoundingClientRect().left - navigation.getBoundingClientRect().left - (navigation.clientWidth - active.offsetWidth) / 2, behavior: "instant" });
+    };
+    revealActive();
+    const frame = requestAnimationFrame(syncOverflow);
+    const observer = new ResizeObserver(() => { revealActive(); syncOverflow(); });
+    observer.observe(navigation);
+    navigation.addEventListener("scroll", syncOverflow, { passive: true });
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); navigation.removeEventListener("scroll", syncOverflow); };
+  }, [state.stage, stages.length]);
 
   function move(update: () => void, completedStage?: number) {
     if (state.stage === reward) onAwardSeen?.();
@@ -116,27 +137,23 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
     else onExit();
   }
 
-  return <section ref={level} className="first-level" aria-labelledby="first-level-title">
+  return <section ref={level} className={`first-level${videoStep ? " is-video" : ""}`} aria-labelledby="first-level-title">
     <div className="level-top"><button type="button" className="game-text-button" onClick={onExit}>← Volver al mapa</button><span>Misión {study.number} · {definition.title}</span></div>
-    <nav aria-label={`Etapas de la misión ${study.number}`} className={`level-stages${stages.length === 6 ? " level-stages-six" : ""}`}>{stages.map((label, i) => {
+    <div className="level-stages-wrap" data-overflow-start={stageOverflow.start || undefined} data-overflow-end={stageOverflow.end || undefined}>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Keyboard users need to scroll the single row, including disabled stages. */}
+    <nav ref={stageNavigation} tabIndex={0} aria-label={`Etapas de la misión ${study.number}`} className={`level-stages${stages.length === 6 ? " level-stages-six" : ""}`}>{stages.map((label, i) => {
       const done = stageComplete(state, definition, i);
       return <button type="button" key={label} className={`${done ? "is-complete" : ""}${recentStage === i ? " is-just-completed" : ""}`} disabled={i > firstLevelReach(state, definition)} aria-current={state.stage === i ? "step" : undefined} onClick={() => go(i)}><span aria-hidden="true">{done ? "✓" : i + 1}</span>{label}<span className="level-sr">{done ? ", completado" : ""}</span></button>;
     })}</nav>
-    {previouslyCompleted && !state.claimed && <p className="level-preview-note">Tu logro anterior se conserva. Puedes repasar esta misión con las actividades actuales; la barra muestra el avance de este repaso.</p>}
-    <div className="level-progress-meter"><span>{experience.stage} · {experience.detail}</span><b>{experience.percent}%</b><progress value={experience.percent} max={100} aria-label="Progreso de la misión" /></div>
-    {recentStage !== null && <p className="level-stage-earned" role="status">✓ {stages[recentStage]} completado. Tu progreso avanzó.</p>}
+    </div>
     <div className={`level-page${newAward ? " is-new-award" : ""}`}>
-      <p className="game-kicker">{state.stage === practice ? `ACTIVIDAD ${state.task + 1} DE ${firstLevelTasks.length} · ${task.kind.toUpperCase()}` : state.stage === 2 ? `LEE · ${state.reading + 1} DE ${firstLevelReadings.length}` : exploringStatue ? "EXPLORA · LA ESTATUA" : `PASO ${state.stage + 1} DE ${stages.length} · A TU RITMO`}</p>
       <h1 id="first-level-title" ref={heading} tabIndex={-1}>{state.stage === 0 ? definition.index === 0 ? "Una historia para mirar con esperanza." : `Descubre: ${definition.title}.` : state.stage === 1 ? "Escucha y conecta las ideas." : state.stage === 2 ? reading.title : exploringStatue ? "Descubre la estatua de Daniel." : state.stage === practice ? task.prompt : newAward ? "Una nueva pieza en tu colección." : "Tu hallazgo sigue aquí."}</h1>
 
       {state.stage < 2 && <>
-        <p className="level-lead">{state.stage === 0 ? "Empieza con una mirada general al tema. Después podrás profundizar y practicar lo aprendido." : media ? "Vuelve sobre las ideas del tema con más calma. Puedes escuchar, pausar o elegir la lectura." : "Repasa las ideas del tema con esta lectura de apoyo."}</p>
         {media ? <LevelVideo key={positionKey} id={media.id} title={`${state.stage === 0 ? "Video introductorio" : "Escucha"}: ${definition.title}`} start={seconds} onPosition={(position) => onChange((prev) => ({ ...prev, positions: { ...prev.positions, [positionKey]: position } }))} /> : <article className="level-reading-card"><h2>Lectura de apoyo</h2><p>{state.stage === 0 ? "El video estará disponible próximamente." : "El podcast estará disponible próximamente."}</p><p>{definition.summary}</p>{firstLevelReadings.map((part, i) => <section key={i}><h3>{part.title}</h3><p>{part.text}</p><BiblePassage reference={part.reference} /></section>)}</article>}
-        {state.stage === 1 && media && <details className="level-reading"><summary>Prefiero leer</summary>{firstLevelMedia.transcript ? <p className="level-transcript">{firstLevelMedia.transcript}</p> : <><p>Lectura de apoyo</p>{firstLevelReadings.map((part, i) => <section key={i}><h2>{part.title}</h2><p>{part.text}</p><BiblePassage reference={part.reference} /></section>)}</>}</details>}
       </>}
 
       {state.stage === 2 && <>
-          <p className="level-lead">Ideas para llevar contigo antes de practicar.</p>
           <article className="level-reading-card"><p>{reading.text}</p><BiblePassage reference={reading.reference} /></article>
           <ul className="level-checklist" aria-label="Ideas leídas">{firstLevelReadings.map((part, i) => <li key={i}><span aria-hidden="true">{state.explored.includes(i) ? "✓" : "○"}</span>{part.title}<span className="level-sr">{state.explored.includes(i) ? ", leída" : ", pendiente"}</span></li>)}</ul>
       </>}
@@ -145,7 +162,7 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
       </StatueExploration>}
 
       {state.stage === practice && (task.kind === "Conecta" ? <LevelMatching key={state.task} definition={definition} progress={state} onChange={onChange} /> : task.kind === "Clasifica" ? <LevelClassification key={state.task} definition={definition} progress={state} onChange={onChange} /> : <>
-        <p className="level-lead">{task.card ? "Toca la tarjeta y después elige dónde corresponde. También puedes arrastrarla." : "Toca una respuesta. Si lo necesitas, tendrás una pista para volver a intentarlo."}</p>
+        {task.card && <p className="level-lead">Toca la tarjeta y después elige dónde corresponde. También puedes arrastrarla.</p>}
         {task.card && !solved && <button type="button" className={`level-source-card${selectedCard ? " selected" : ""}`} aria-pressed={selectedCard} draggable onDragStart={(event) => { event.dataTransfer.setData("text/plain", `level-card-${state.task}`); event.dataTransfer.effectAllowed = "move"; setSelectedCard(true); }} onClick={() => setSelectedCard(true)}>{task.card}</button>}
         <div className={`level-options${task.card ? " level-categories" : ""}`} role="group" aria-label="Respuestas">{task.options.map((option, i) => <button type="button" key={option} className={`${solved && i === task.answer ? "correct" : ""}${wrong === i ? " wrong" : ""}`} aria-disabled={solved || Boolean(task.card && !selectedCard)} onClick={() => choose(i)} onDragOver={(event) => { if (!solved) event.preventDefault(); }} onDrop={(event) => { event.preventDefault(); if (event.dataTransfer.getData("text/plain") === `level-card-${state.task}`) choose(i); }}><span aria-hidden="true">{solved && i === task.answer ? "✓" : wrong === i ? "!" : String.fromCharCode(65 + i)}</span><span className="level-option-label">{option}</span>{solved && i === task.answer && task.card && <span className="level-placed-card">{task.card}</span>}</button>)}</div>
         <div className={`level-feedback${confirmedNow ? " just-confirmed" : ""}${solved ? " success" : wrong !== null ? " hint" : ""}`} role="status" aria-live="polite" aria-atomic="true">{solved ? <><strong>✓ ¡Correcto!</strong><p>{task.explanation}</p></> : wrong !== null ? <><strong>Una pista para intentarlo otra vez</strong><p>{task.hint}</p></> : <p>{task.card && !selectedCard ? "Selecciona primero la tarjeta." : "Elige la respuesta correcta para continuar."}</p>}</div>
@@ -154,7 +171,6 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
       {state.stage === reward && <>
         {newAward && <div className="level-confetti" aria-hidden="true">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ "--i": i } as CSSProperties} />)}</div>}
         {newAward && <p className="level-award-earned" role="status">✓ Misión completada. Conseguiste {definition.badge}{unlockedResource ? ` y desbloqueaste ${unlockedResource.title}` : " y su infografía"}.</p>}
-        <p className="level-lead">Completaste las actividades de {definition.title}. Tu estampa ya está en la galería.</p>
         <FirstLevelReward definition={definition} />
         {unlockedResource && onResource && <div className={`level-new-resource${newAward ? " is-new-award" : ""}`}><p className="game-kicker">{newAward ? "NUEVO RECURSO DESBLOQUEADO" : "RECURSO EN TU COLECCIÓN"}</p><h2>{unlockedResource.title}</h2><p>{unlockedResource.description}</p><button className="game-secondary" type="button" onClick={() => onResource(unlockedResource.id)}>Explorar mi hallazgo <span aria-hidden="true">↗</span></button></div>}
       </>}
@@ -163,7 +179,9 @@ export default function FirstLevel({ definition = firstLevelDefinition, progress
       <button type="button" className="game-secondary" onClick={back}>{state.stage === 0 ? "Salir" : "← Anterior"}</button>
       <button type="button" className="game-primary" disabled={(state.stage === practice && !solved) || (exploringStatue && !statueComplete(state, definition))} onClick={state.stage === reward ? onNext : forward}>{state.stage === reward ? "Seguir en el mapa →" : state.stage === practice && state.task === firstLevelTasks.length - 1 ? "Recibir mi premio" : "Continuar →"}</button>
     </div>
+        {state.stage === 1 && media && <details className="level-reading"><summary>Prefiero leer</summary>{firstLevelMedia.transcript ? <p className="level-transcript">{firstLevelMedia.transcript}</p> : <><p>Lectura de apoyo</p>{firstLevelReadings.map((part, i) => <section key={i}><h2>{part.title}</h2><p>{part.text}</p><BiblePassage reference={part.reference} /></section>)}</>}</details>}
     {state.stage === reward && definition.index < modules.length - 1 && <button className="game-text-button" type="button" onClick={onExit}>Elegir otra misión en el mapa →</button>}
+    {previouslyCompleted && !state.claimed && <p className="level-preview-note">Tu logro anterior se conserva. Puedes repasar esta misión con las actividades actuales.</p>}
     <p className="level-save" aria-live="off">{saving ? "Guardando tu avance…" : persistent ? "Progreso guardado" : "No se pudo guardar tu progreso."}</p>
     <details className="level-reading"><summary>Fuentes y cuaderno de la misión</summary><p>Perspectiva adventista. Distingue el texto bíblico de su interpretación y verifica las respuestas con las fuentes originales.</p><ul>{study.sources.map((source) => <li key={source.label}>{source.url ? <a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a> : source.label}</li>)}</ul><a href={study.notebookUrl} target="_blank" rel="noreferrer">Abrir notebook completo ↗</a></details>
   </section>;

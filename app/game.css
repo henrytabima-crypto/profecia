@@ -1,5 +1,6 @@
 /* The expedition extends the atlas's navy and gold identity. */
-.game-shell { --game-bg: #0b1423; --game-panel: #111f33; --game-muted: #a8b6cb; --game-gold: #efcd83; background: var(--game-bg); color: #f6f2e9; min-height: 100svh; display: flex; flex-direction: column; font-size: 16px; }
+html, body { background: #0b1423; }
+.game-shell { --game-bg: #0b1423; --game-panel: #111f33; --game-muted: #a8b6cb; --game-gold: #efcd83; background: var(--game-bg); color: #f6f2e9; min-height: 100svh; min-height: 100dvh; display: flex; flex-direction: column; font-size: 16px; }
 .game-shell button, .game-shell a, .game-shell summary, .game-shell input { -webkit-tap-highlight-color: transparent; }
 .game-shell button { cursor: pointer; }
 .game-shell button:disabled { cursor: not-allowed; }

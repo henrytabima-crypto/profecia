@@ -120,18 +120,18 @@ export default function Home() {
 
   return <main className={`game-shell${screen === "map" ? " is-world" : ""}`}>
     <a className="game-skip" href="#game-content">Saltar al contenido</a>
-    <header className="game-header">
+    {screen !== "lesson" && <header className="game-header">
       <button className="game-brand" type="button" onClick={() => showMap()} aria-label="Profecía, volver al mapa"><span className="brand-mark" aria-hidden="true">P</span><span>PROFECÍA<small>La expedición</small></span></button>
       <div className="game-header-progress" aria-label={`${journey.completed.length} de 8 misiones completadas`}><span aria-hidden="true">✦</span><b>{journey.completed.length}</b><span>/ 8</span><progress value={journey.completed.length} max={8} aria-label="Misiones completadas" /></div>
-    </header>
+    </header>}
 
     {resetError && <p className="game-storage-warning" role="status">Reiniciamos la aventura en esta página, pero el navegador impidió borrar parte del guardado anterior. Podría reaparecer al recargar.</p>}
     {storageError && <p className="game-storage-warning" role="status">Puedes continuar, pero el navegador no permite guardar tu avance. Se conservará mientras mantengas esta página abierta.</p>}
-    {journey.unlockedAll && <div className="game-free-banner">Exploración libre activa · Todo está disponible. Tus logros siguen contando solo las misiones completadas.</div>}
+    {journey.unlockedAll && screen !== "lesson" && <div className="game-free-banner">Exploración libre activa · Todo está disponible. Tus logros siguen contando solo las misiones completadas.</div>}
 
     <div ref={content} id="game-content" className={`game-content game-screen-${screen}`}>
       {screen === "map" && !ready && <p className="level-sr" role="status">Cargando tu progreso…</p>}
-      {screen === "map" && <ExpeditionWorld key={`${ready && daniel.ready}:${mapRevision}`} persistent={!storageError} arrival={arrival} journey={journey} selectedIndex={selectedIndex} ready={ready && daniel.ready} onSelect={setMapSelection} onOpen={openLesson} onResource={openResource} />}
+      {screen === "map" && <ExpeditionWorld key={`${ready && daniel.ready}:${mapRevision}`} arrival={arrival} journey={journey} selectedIndex={selectedIndex} ready={ready && daniel.ready} onOpen={openLesson} />}
 
       {screen === "lesson" && <FirstLevel key={lesson.id} definition={levelDefinitions[lessonIndex]} progress={levelProgress(journey, lessonIndex)} persistent={!storageError} saving={saving} newAward={newAward === lessonIndex} onAwardSeen={() => setNewAward(null)} previouslyCompleted={journey.completed.includes(lesson.id)}
         onChange={(update) => setJourney((state) => lessonIndex === 0

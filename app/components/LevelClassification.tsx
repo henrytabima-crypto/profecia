@@ -36,7 +36,15 @@ export default function LevelClassification({ definition, progress, onChange }: 
   return <>
     <p className="level-lead">Reparte las tarjetas entre las dos categorías. Toca una tarjeta y después su categoría, o arrástrala.</p>
     <div ref={destinations} className="level-sort-categories">
-      {activity.categories.map((category, i) => <div key={category} className={`level-sort-category${wrong === i ? " wrong" : ""}`} role="group" aria-label={category}
+      {activity.categories.map((category, i) => (
+        // The native heading button provides keyboard access to the same action.
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+        <div key={category} className={`level-sort-category${wrong === i ? " wrong" : ""}`} role="group" aria-label={category}
+        onClick={(event) => {
+          // Let internal controls handle their own clicks, including the heading button.
+          if (event.target instanceof Element && event.target.closest("button, a, input, select, textarea, summary, [role='button'], [role='link'], [contenteditable]:not([contenteditable='false'])")) return;
+          if (selected !== null && !complete) place(selected, i);
+        }}
         onDragOver={(event) => event.preventDefault()}
         onDrop={(event) => {
           event.preventDefault();
@@ -49,7 +57,7 @@ export default function LevelClassification({ definition, progress, onChange }: 
         <ul aria-label={`Tarjetas en ${category}`}>
           {placed.filter((n) => activity.cards[n]?.category === i).map((n) => <li key={n}><span aria-hidden="true">✓ </span>{activity.cards[n].text}</li>)}
         </ul>
-      </div>)}
+      </div>))}
     </div>
     <div className={`level-feedback${complete ? " success" : wrong !== null ? " hint" : ""}`} role="status" aria-live="polite" aria-atomic="true">
       <strong>{complete ? "✓ ¡Todas las tarjetas en su lugar!" : `${placed.length} de ${activity.cards.length} tarjetas clasificadas`}</strong>

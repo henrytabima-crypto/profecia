@@ -1,9 +1,8 @@
 "use client";
 
 import { useId, useLayoutEffect, useRef, type CSSProperties, type KeyboardEvent } from "react";
-import { flushSync } from "react-dom";
 import { missionExperience, resumeLesson, stageComplete, type AwardTransition } from "../data/expedition";
-import { challenges, levelProgress, resources, resourceUnlocked, type Journey, type ResourceId } from "../data/journey";
+import { levelProgress, type Journey } from "../data/journey";
 import { levelDefinitions } from "../data/levels";
 import { modules } from "../data/studies";
 
@@ -67,20 +66,15 @@ function WorldLandscape() {
   </div>;
 }
 
-type Props = { persistent: boolean; arrival?: AwardTransition | null; journey: Journey; selectedIndex: number; ready: boolean; onSelect: (index: number) => void; onOpen: (index: number) => void; onResource: (id: ResourceId) => void };
+type Props = { arrival?: AwardTransition | null; journey: Journey; selectedIndex: number; ready: boolean; onOpen: (index: number) => void };
 
-export default function ExpeditionWorld({ persistent, arrival, journey, selectedIndex, ready, onSelect, onOpen, onResource }: Props) {
+export default function ExpeditionWorld({ arrival, journey, selectedIndex, ready, onOpen }: Props) {
   const resume = resumeLesson(journey);
   const shortJourney = arrival && Math.abs(stops[arrival.from].y - stops[arrival.to].y) <= 360;
   const motionStart = shortJourney && arrival ? arrival.from : selectedIndex;
   const initialIndex = useRef(motionStart);
   const scroller = useRef<HTMLDivElement>(null);
   const nodes = useRef<(HTMLButtonElement | null)[]>([]);
-  const preview = useRef<HTMLDialogElement>(null);
-  const titleId = useId();
-  const selected = modules[selectedIndex];
-  const experience = missionExperience(journey, selectedIndex);
-  const reward = resources.find((resource) => resource.lesson === selectedIndex);
 
   useLayoutEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -92,11 +86,6 @@ export default function ExpeditionWorld({ persistent, arrival, journey, selected
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Consume the transient arrival once when entering the world.
   }, []);
 
-  function select(index: number) {
-    flushSync(() => onSelect(index));
-    preview.current?.showModal();
-  }
-  function enter() { preview.current?.close(); onOpen(selectedIndex); }
   function keyboard(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     const target = event.key === "ArrowUp" || event.key === "ArrowRight" ? Math.min(7, index + 1)
       : event.key === "ArrowDown" || event.key === "ArrowLeft" ? Math.max(0, index - 1)
@@ -119,7 +108,7 @@ export default function ExpeditionWorld({ persistent, arrival, journey, selected
           const milestones = [status.complete || [0, 1].every((stage) => stageComplete(progress, definition, stage)), status.complete || (stageComplete(progress, definition, 2) && (!definition.exploration || stageComplete(progress, definition, 3))), status.complete];
           return <li key={mission.id} style={{ left: `${stops[index].x}%`, top: `${stops[index].y}px`, "--mission-progress": `${status.percent * 3.6}deg` } as CSSProperties} className={`world-stop${status.complete ? " is-complete" : ""}${selectedIndex === index ? " is-selected" : ""}${resume === index ? " is-resume" : ""}${arrival?.from === index ? " is-new-complete" : ""}${arrival?.to === index ? " is-arrival-target" : ""}`}>
             {resume === index && !arrival && <div className="world-traveler" aria-hidden="true"><ExpeditionIcon kind="compass" /><span>Tú</span></div>}
-            <button ref={(element) => { nodes.current[index] = element; }} type="button" className="world-node" disabled={!ready} aria-haspopup="dialog" aria-label={`Misión ${mission.number}: ${mission.title}. ${status.complete ? "Completada" : status.started ? `En curso, ${status.percent}%` : "Disponible"}${resume === index ? ". Tu siguiente paso" : ""}`} onKeyDown={(event) => keyboard(event, index)} onClick={() => select(index)}><span>{index + 1}</span>{status.complete && <i aria-hidden="true">✓</i>}</button>
+            <button ref={(element) => { nodes.current[index] = element; }} type="button" className="world-node" disabled={!ready} aria-label={`Misión ${mission.number}: ${mission.title}. ${status.complete ? "Completada" : status.started ? `En curso, ${status.percent}%` : "Disponible"}${resume === index ? ". Tu siguiente paso" : ""}`} onKeyDown={(event) => keyboard(event, index)} onClick={() => onOpen(index)}><span>{index + 1}</span>{status.complete && <i aria-hidden="true">✓</i>}</button>
             <span className="world-stars" role="img" aria-label={`${milestones.filter(Boolean).length} de 3 hitos conseguidos`}>{milestones.map((done, i) => <span key={i} className={done ? "earned" : ""} aria-hidden="true">★</span>)}</span>
             <span className="world-node-title" aria-hidden="true">{mission.title}</span>
           </li>;
@@ -129,15 +118,5 @@ export default function ExpeditionWorld({ persistent, arrival, journey, selected
       </div>
     </div>
     <button className="world-recenter" type="button" aria-label="Volver a mi siguiente misión" onClick={() => { nodes.current[resume]?.scrollIntoView({ block: "center", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); nodes.current[resume]?.focus({ preventScroll: true }); }}><ExpeditionIcon kind="compass" /></button>
-    <dialog ref={preview} className="world-preview" aria-labelledby={titleId}>
-      <div className="world-preview-top"><p className="game-kicker">MISIÓN {selected.number} · {experience.complete ? "COMPLETADA" : experience.started ? "EN CURSO" : "DISPONIBLE"}</p><button type="button" className="world-close" aria-label="Cerrar ficha de misión" onClick={() => preview.current?.close()}>✕</button></div>
-      <h2 id={titleId}>{selected.title}</h2><p className="world-preview-summary">{selected.summary}</p>
-      <div className="game-mission-meter"><span>{experience.complete ? "Logro conseguido" : `${experience.stage} · ${experience.detail}`}</span><b>{experience.percent}%</b><progress value={experience.percent} max={100} aria-label={`Progreso de ${selected.title}`} /></div>
-      <button className="game-primary" type="button" disabled={!ready} onClick={enter}>{experience.complete ? "Volver a explorar" : experience.started ? "Continuar misión" : "Iniciar misión"}<span aria-hidden="true">→</span></button>
-      <p className="world-preview-reward"><span aria-hidden="true">✦</span>{experience.complete ? "Tu logro: " : "Tu próximo logro: "}{challenges[selectedIndex].badge}</p>
-      {reward && resourceUnlocked(journey, reward) && <button type="button" className="game-secondary" onClick={() => { preview.current?.close(); onResource(reward.id); }}>Explorar {reward.title} <span aria-hidden="true">↗</span></button>}
-      {reward && !resourceUnlocked(journey, reward) && <p className="world-preview-unlock">Al completar esta misión: {reward.title}.</p>}
-      <p className="world-preview-save">Puedes explorar cualquier misión. {persistent ? "Tu avance se guarda en este navegador." : "El guardado no está disponible. Puedes seguir mientras esta página esté abierta."}</p>
-    </dialog>
   </section>;
 }
